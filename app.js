@@ -20,28 +20,19 @@ const createSquare = () => {
 };
 
 const getRandomColor = () => {
-  return colors[Math.round(Math.random) * colors.length];
+  return colors[Math.round(Math.random() * colors.length)];
 };
 
 for (let i = 0; i < squareCount; i++) {
   const square = createSquare();
 
-  //   square.style.backgroundColor = "red";
   square.addEventListener("mouseover", (event) => {
-    setColor(square);
+    square.style.backgroundColor = getRandomColor();
   });
 
   square.addEventListener("mouseleave", (event) => {
-    clearColor(square);
+    square.style.backgroundColor = defaultColor;
   });
 
   container.appendChild(square);
-}
-
-function setColor(element) {
-  element.style.background = getRandomColor();
-}
-
-function clearColor(element) {
-  element.style.background = defaultColor;
 }
